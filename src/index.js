@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Header } from './components/Header/Header';
+import { App } from './routes/App';
 
 const container = document.getElementById('app');
 
-ReactDOM.render(<Header />, container);
+const renderize = () => ReactDOM.render(<App />, container);
+
+renderize();
+
+if (module.hot) {
+  module.hot.accept(renderize, () => renderize());
+}

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import logo from '../assets/badge-header.svg';
+import logo from '../../assets/logo.svg';
+import { StyledHeader } from './styles';
 
 export const Header = () => {
   return (
-    <div>
-      <div>
-        <img src={logo} alt="PlatziConf Logo"/>
-      </div>
-    </div>
+    <StyledHeader>
+      <img src={logo} alt="PlatziConf Logo"/>
+      <p>Platzi<span>Conf</span></p>
+    </StyledHeader>
   );
 };
