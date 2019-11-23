@@ -11,10 +11,9 @@ export const colors = {
 
 export const size = {
   small: 320,
-  medium: 480,
-  mediumL: 600,
-  large: 768,
-  big: 1024,
+  medium: 425,
+  mediumL: 768,
+  large: 1024,
 };
 
 export const above = Object.keys(size).reduce((acc, label) => {
@@ -54,6 +53,9 @@ export const GlobalStyle = createGlobalStyle`
     height: 100vh;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+  }
+
+  #app {
+    max-width: 1400px;
   }
 `;

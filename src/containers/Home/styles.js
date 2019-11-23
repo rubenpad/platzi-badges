@@ -40,7 +40,7 @@ export const StyledHome = styled.div`
       background: ${colors.green};
       color: white;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 700;
       
       &:active {

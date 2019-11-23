@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { colors } from '../../GlobalStyle';
+import { above, colors } from '../../GlobalStyle';
 
 export const StyledBadge = styled.div`
-  width: 400px;
+  width: 100%;
   height: 340px;
   border-radius: 4px;
-  box-shadow: 0 10px 14px rgba(0, 0, 0, 0.08);
+  background: white;
 
   .header {
     width: 100%;
@@ -51,5 +51,9 @@ export const StyledBadge = styled.div`
     background: ${colors.darkBlue};
     color: ${colors.lightBlue};
   }
+
+  ${above.mediumL`
+    width: 420px;
+  `};
 `;
 

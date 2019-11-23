@@ -1,14 +1,15 @@
 import styled from 'styled-components';
-import { colors } from '../../GlobalStyle';
+import { above, colors } from '../../GlobalStyle';
 
 export const StyledBadgeForm = styled.div`
-  width: 400px;
+  width: 100%;
   height: 480px;
   padding: 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: white;
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 
@@ -41,4 +42,8 @@ export const StyledBadgeForm = styled.div`
       cursor: pointer;
     }
   }
+
+  ${above.mediumL`
+    width: 420px;
+  `}
 `;

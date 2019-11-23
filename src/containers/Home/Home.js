@@ -11,7 +11,7 @@ export const Home = () => {
       <div className="description">
         <img src={logo} alt="PlatziConf Logo"/>
         <h1>Badge Management System</h1>
-        <button>Start</button>
+        <button>START</button>
       </div>
     </StyledHome>
   )
