@@ -1,13 +1,22 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import { StyledHeader } from './styles';
 
-export const Header = () => {
+function Header() {
   return (
     <StyledHeader>
       <img src={logo} alt="PlatziConf Logo"/>
-      <p>Platzi<span>Conf</span></p>
+      <Link to="/">
+        <p>
+          Platzi
+          <span>
+            Conf
+          </span>
+        </p>
+      </Link>
     </StyledHeader>
   );
 };
+
+export default Header;

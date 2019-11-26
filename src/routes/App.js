@@ -1,13 +1,13 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import { GlobalStyle } from '../GlobalStyle';
-import { Layout } from '../components/Layout';
-import { Home } from '../containers/Home/Home';
-import { Badges } from '../containers/Badges/Badges';
-import { NewBadge } from '../containers/NewBadge/NewBadge';
+import Layout from '../components/Layout';
+import Home from '../containers/Home/Home';
+import Badges from '../containers/Badges/Badges';
+import NewBadge from '../containers/NewBadge/NewBadge';
 
-export const App = () => {
+function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
@@ -21,3 +21,5 @@ export const App = () => {
     </BrowserRouter>
   );
 };
+
+export default App;

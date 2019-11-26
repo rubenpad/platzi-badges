@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 import { above, colors } from '../../GlobalStyle';
 import stars from '../../assets/stars.svg';
@@ -32,16 +33,20 @@ export const StyledHome = styled.div`
       font-size: 24px;
     }
 
-    button {
+    a {
       width: 100%;
       height: 48px;
-      margin: 20px 0;
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border-radius: 4px;
       background: ${colors.green};
       color: white;
       cursor: pointer;
       font-size: 18px;
       font-weight: 700;
+      text-decoration: none;
       
       &:active {
         transition: all 0.5s ease-out;

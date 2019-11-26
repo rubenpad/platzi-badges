@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { App } from './routes/App';
-
+import App from './routes/App';
 const container = document.getElementById('app');
 
-const renderize = () => ReactDOM.render(<App />, container);
+function renderHMR() {
+  return (
+    ReactDOM.render(
+      <App />,
+      container,
+    )
+  );
+}
 
-renderize();
+renderHMR();
 
 if (module.hot) {
-  module.hot.accept(renderize, () => renderize());
+  module.hot.accept(renderHMR, () => renderHMR());
 }

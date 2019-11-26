@@ -9,11 +9,14 @@ export const StyledHeader = styled.div`
   padding-inline-start: 20px;
   background: ${colors.darkBlue};
 
-  p {
-    color: white;
-    margin-left: 6px;
-    span {
-      font-weight: bold;
-    }
+  a {
+    text-decoration: none;
+    p {
+      color: white;
+      margin-left: 6px;
+      span {
+        font-weight: bold;
+      }
+  }
   }
 `;

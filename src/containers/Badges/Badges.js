@@ -1,14 +1,29 @@
-import React from "react";
-import { Badge } from "../../components/Badge/Badge";
+import React from 'react';
 
-export const Badges = () => {
+import useQuery from '../../hooks/useQuery';
+import api from '../../api';
+
+import { StyledBadges } from './styles';
+import Loader from '../../components/Loader/Loader';
+import BadgesList from '../../components/BadgesList/BadgesList';
+
+function Badges() {
+  const badges = useQuery(() => api.badges.list());
+  console.log(badges);
+
+  if (badges.loading) {
+    return (
+      <StyledBadges>
+        <Loader />
+      </StyledBadges>
+    );
+  }
+
   return (
-    <Badge
-      firstName="Ruben"
-      lastName="Padilla"
-      email="rubbenpad2@gmail.com"
-      jobTitle="Engineer"
-      twitter="@rubbenpad2"
-    />
+    <StyledBadges>
+      <BadgesList badges={badges.data} />
+    </StyledBadges>
   );
-};
+}
+
+export default Badges;

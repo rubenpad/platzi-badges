@@ -25,6 +25,7 @@ export const StyledNewBadge = styled.div`
     display: flex;
     justify-content: center;
     align-self: flex-start; 
+    font-size: 17px;
   }
 
   ${above.mediumL`
