@@ -20,7 +20,15 @@ const rotation = keyframes`
   }
 `;
 
-export const StyledLoader = styled.div`
+export const Loading = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Loader = styled.div`
   width: 60px;
   height: 60px;
   display: flex;

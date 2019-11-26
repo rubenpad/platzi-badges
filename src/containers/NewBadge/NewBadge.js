@@ -4,6 +4,8 @@ import api from '../../api';
 import { StyledNewBadge } from './styles';
 import Badge from '../../components/Badge/Badge';
 import BadgeForm from '../../components/BadgeForm/BadgeForm';
+import PageError from '../../components/PageError/PageError';
+import PageLoading from '../../components/PageLoading/PageLoading';
 
 function NewBadge(props) {
   const [status, setStatus] = useState({ loading: false, error: null });
@@ -34,7 +36,9 @@ function NewBadge(props) {
     }
   };
 
-  if (status.loading) <h1>Loading...</h1>;
+  if (status.error) return <PageError error={status.error} />
+
+  if (status.loading) return <Loading />;
 
   return (
     <StyledNewBadge>
