@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { StyledBadgeForm } from './styles';
+import { Container, Title, Form, Input, Button } from './styles';
 
 function BadgeForm(props) {
   const { onChange, onSubmit, formValues, error, title } = props;
   return (
-    <StyledBadgeForm>
-      <h2>{title}</h2>
-      <form className="form" onSubmit={onSubmit}>
-        <input
+    <Container>
+      <Title>{title}</Title>
+      <Form onSubmit={onSubmit}>
+        <Input
           onChange={onChange}
           type="text"
           name="firstName"
@@ -16,7 +16,7 @@ function BadgeForm(props) {
           placeholder="First Name"
           required
         />
-        <input
+        <Input
           onChange={onChange}
           type="text"
           name="lastName"
@@ -24,7 +24,7 @@ function BadgeForm(props) {
           placeholder="Last Name"
           required
         />
-        <input
+        <Input
           onChange={onChange}
           type="email"
           name="email"
@@ -32,7 +32,7 @@ function BadgeForm(props) {
           placeholder="Email"
           required
         />
-        <input
+        <Input
           onChange={onChange}
           type="text"
           name="jobTitle"
@@ -40,7 +40,7 @@ function BadgeForm(props) {
           placeholder="Job Title"
           required
         />
-        <input
+        <Input
           onChange={onChange}
           type="text"
           name="twitter"
@@ -49,9 +49,9 @@ function BadgeForm(props) {
           required
         />
         {error && <p>{error.message}</p>}
-        <button type="submit">Save</button>
-      </form>
-    </StyledBadgeForm>
+        <Button type="submit">Save</Button>
+      </Form>
+    </Container>
   );
 };
 

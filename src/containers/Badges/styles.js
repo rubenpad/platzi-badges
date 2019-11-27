@@ -1,7 +1,6 @@
-/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 
-export const StyledBadges = styled.div`
+const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -9,3 +8,5 @@ export const StyledBadges = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export default Container;

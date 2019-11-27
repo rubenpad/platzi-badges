@@ -1,16 +1,16 @@
 import React from 'react';
-import { StyledPageError } from './styles';
+import Container from './styles';
 
 function PageError({ error }) {
   return (
-    <StyledPageError>
+    <Container>
       <h1>
         <span role="img" aria-label="X error">
           ❌
         </span>
         {error.message}
       </h1>
-    </StyledPageError>
+    </Container>
   );
 }
 

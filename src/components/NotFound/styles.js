@@ -1,9 +1,8 @@
-/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 
 import stars from '../../assets/stars.svg';
 
-export const StyledNotFound = styled.div`
+const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -24,3 +23,5 @@ export const StyledNotFound = styled.div`
     margin: 50px 0;
   }
 `;
+
+export default Container;

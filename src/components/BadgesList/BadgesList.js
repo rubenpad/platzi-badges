@@ -1,26 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { StyledBadgesList } from './styles';
 import BadgesListItem from '../BadgesListItem/BadgesListItem';
+import { Container, Box, List } from './styles';
 
 function Badgeslist({ badges }) {
-
   return (
-    <StyledBadgesList>
-      <div className="box">
+    <Container>
+      <Box>
         <Link to="/badges/new">NEW BADGE</Link>
-      </div>
-      <ul>
-        {badges.map((badge) => {
+      </Box>
+      <List>
+        {badges.map(badge => {
           return (
             <li key={badge.id}>
-              <BadgesListItem badge={badge} />
+              <Link className="link" to={`/badges/${badge.id}/edit`}>
+                <BadgesListItem badge={badge} />
+              </Link>
             </li>
           );
         })}
-      </ul>
-    </StyledBadgesList>
+      </List>
+    </Container>
   );
 }
 

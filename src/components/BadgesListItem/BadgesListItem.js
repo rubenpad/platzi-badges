@@ -1,16 +1,16 @@
 import React from 'react';
 import { FaTwitter } from 'react-icons/fa';
 
-import { StyledBadgesListItem, Information } from './styles';
+import { Item, UserBox } from './styles';
 import Gravatar from '../Gravatar/Gravatar';
 
 function BadgesListItem({ badge }) {
   const { firstName, lastName, email, jobTitle, twitter } = badge;
 
   return (
-    <StyledBadgesListItem>
+    <Item>
       <Gravatar email={email} />
-      <Information>
+      <UserBox>
         <div>
           <h2>{`${firstName} ${lastName}`}</h2>
         </div>
@@ -21,9 +21,9 @@ function BadgesListItem({ badge }) {
           </p>
           <p>{jobTitle}</p>
         </div>
-      </Information>
-    </StyledBadgesListItem>
+      </UserBox>
+    </Item>
   );
-};
+}
 
 export default BadgesListItem;

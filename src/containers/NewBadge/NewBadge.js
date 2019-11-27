@@ -1,41 +1,54 @@
 import React from 'react';
 
 import api from '../../api';
-import { useForm } from '../../hooks/useForm';
 import { StyledNewBadge } from './styles';
 import Badge from '../../components/Badge/Badge';
 import BadgeForm from '../../components/BadgeForm/BadgeForm';
 import PageLoading from '../../components/PageLoading/PageLoading';
 
 function NewBadge(props) {
-  const { history } = props;
-  const form = useForm(
-    {
-      firstName: '',
-      lastName: '',
-      email: '',
-      jobTitle: '',
-      twitter: '',
-    },
-    api.badges.create,
-    () => history.push('/badges'),
-  );
+  const [status, setStatus] = useState({ loading: false, error: null });
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    jobTitle: '',
+    twitter: '',
+  });
 
-  console.log(form.values);
+  const onChange = (event) => {
+    const { name, value } = event.target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setStatus({ loading: true, error: null });
+    try {
+      await api.badges.create(form);
+      setStatus({ loading: false });
+      props.history.push('/badges');
+    } catch (error) {
+      setStatus({ loading: false, error: null });
+    }
+  };
 
   if (form.status.loading) return <PageLoading />;
 
   return (
     <StyledNewBadge>
       <div className="badge">
-        <Badge values={form.values} />
+        <Badge badge={form} />
       </div>
       <div className="form">
         <BadgeForm
-          onChange={form.onChange}
-          onSubmit={form.onSubmit}
-          formValues={form.values}
-          error={form.status.error}
+          onChange={onChange}
+          onSubmit={onSubmit}
+          formValues={form}
+          error={status.error}
           title="CREATE NEW BADGE"
         />
       </div>

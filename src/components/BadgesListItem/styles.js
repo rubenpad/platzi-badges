@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../GlobalStyle';
 
-const StyledBadgesListItem = styled.div`
+const Item = styled.div`
   width: 100%;
   height: 100%;
   padding-left: 10px;
@@ -10,14 +10,15 @@ const StyledBadgesListItem = styled.div`
   background: #f6f8f9;
 `;
 
-const Information = styled.div`
+const UserBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: black;
 
   .twitter {
     color: ${colors.lightBlue};
   }
 `;
 
-export { StyledBadgesListItem, Information };
+export { Item, UserBox };

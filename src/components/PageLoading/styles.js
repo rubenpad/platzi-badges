@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import styled, { keyframes } from 'styled-components';
 import { colors } from '../../GlobalStyle';
 
@@ -20,7 +19,7 @@ const rotation = keyframes`
   }
 `;
 
-export const Loading = styled.div`
+const Loading = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -28,7 +27,7 @@ export const Loading = styled.div`
   align-items: center;
 `;
 
-export const Loader = styled.div`
+const Loader = styled.div`
   width: 60px;
   height: 60px;
   display: flex;
@@ -47,3 +46,5 @@ export const Loader = styled.div`
     content: '';
   }
 `;
+
+export { Loading, Loader };

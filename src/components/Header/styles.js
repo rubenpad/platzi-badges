@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../GlobalStyle';
 
-export const StyledHeader = styled.div`
+const StyledHeader = styled.header`
   width: 100%;
   height: 80px;
   display: flex;
@@ -17,6 +17,8 @@ export const StyledHeader = styled.div`
       span {
         font-weight: bold;
       }
-  }
+    }
   }
 `;
+
+export default StyledHeader;

@@ -3,16 +3,16 @@ import { FaTwitter } from 'react-icons/fa';
 
 import logo from '../../assets/badge-header.svg';
 import Gravatar from '../Gravatar/Gravatar';
-import { StyledBadge } from './styles';
+import { Container, Header, UserBox, Footer } from './styles';
 
-function Badge({ values }) {
-  const { firstName, lastName, jobTitle, twitter, email } = values;
+function Badge({ badge }) {
+  const { firstName, lastName, jobTitle, twitter, email } = badge;
   return (
-    <StyledBadge>
-      <div className="header">
+    <Container>
+      <Header>
         <img src={logo} alt="PlatziConf Logo" />
-      </div>
-      <div className="user">
+      </Header>
+      <UserBox>
         <Gravatar email={email} />
         <div>
           <h1>
@@ -28,11 +28,11 @@ function Badge({ values }) {
           </p>
           <p>{jobTitle || 'Job Title'}</p>
         </div>
-      </div>
-      <div className="footer">
+      </UserBox>
+      <Footer>
         <p>#platziconf</p>
-      </div>
-    </StyledBadge>
+      </Footer>
+    </Container>
   );
 };
 

@@ -1,34 +1,33 @@
 import React, { useState } from 'react';
 
 import api from '../../api';
-import { StyledNewBadge } from './styles';
+import useQuery from '../../hooks/useQuery';
+
+import { StyledEditBadge } from './styles';
 import Badge from '../../components/Badge/Badge';
 import BadgeForm from '../../components/BadgeForm/BadgeForm';
 import PageError from '../../components/PageError/PageError';
 import PageLoading from '../../components/PageLoading/PageLoading';
 
 function EditBadge(props) {
-  const [status, setStatus] = useState({ loading: false, error: null });
-  const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    jobTitle: '',
-    twitter: '',
-  });
+  const badge = useQuery(() => api.badges.read(props.match.params.badgeId));
 
-  const handleChange = (event) => {
+
+  const [status, setStatus] = useState({ loading: false, error: null });
+
+  const onChange = (event) => {
     const { name, value } = event.target;
     setForm({
-      ...form,
-      [name]: value });
+      ...badge.data,
+      [name]: value,
+    });
   };
 
-  const handleSubmit = async (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
     setStatus({ loading: true, error: null });
     try {
-      await api.badges.create(form);
+      await api.badges.update(props.match.params.badgeId, badge.data);
       setStatus({ loading: false, error: null });
       props.history.push('/badges');
     } catch (error) {
@@ -36,31 +35,25 @@ function EditBadge(props) {
     }
   };
 
-  if (status.error) return <PageError error={status.error} />;
+  if (badge.error) return <PageError error={status.error} />;
 
-  if (status.loading) return <PageLoading />;
+  if (badge.loading || status.loading) return <PageLoading />;
 
   return (
-    <StyledNewBadge>
+    <StyledEditBadge>
       <div className="badge">
-        <Badge
-          firstName={form.firstName}
-          lastName={form.lastName}
-          email={form.email}
-          jobTitle={form.jobTitle}
-          twitter={form.twitter}
-        />
+        <Badge badge={badge.data} />
       </div>
       <div className="form">
         <BadgeForm
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          formValues={form}
+          onChange={onChange}
+          onSubmit={onSubmit}
+          formValues={badge.data}
           error={status.error}
-          title="CREATE NEW BADGE"
+          title="EDIT BADGE"
         />
       </div>
-    </StyledNewBadge>
+    </StyledEditBadge>
   );
 };
 
