@@ -1,8 +1,7 @@
-/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 import { above } from '../../GlobalStyle';
 
-export const StyledNewBadge = styled.div`
+const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -10,33 +9,33 @@ export const StyledNewBadge = styled.div`
   align-items: center;
   justify-content: center;
   background: #f6f8f9;
+`;
 
-  .badge {
-    width: 100%;
-    height: 340px;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-self: flex-start;
-  }
-
-  .form {
-    width: 100%;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-self: flex-start; 
-    font-size: 17px;
-  }
-
+const ContainerBadge = styled.div`
+  width: 100%;
+  height: 340px;
+  margin: 20px 0 0 0;
   ${above.mediumL`
-    .badge {
-      width: 50%;
-    }
-
-    .form {
-      width: 50%;
-      margin: 20px 0;
-    }
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
   `};
 `;
+
+const ContainerForm = styled.div`
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-self: flex-start;
+  font-size: 17px;
+
+  ${above.mediumL`
+    width: 50%;
+    margin: 20px 0;
+  `};
+`;
+
+export { Container, ContainerBadge, ContainerForm };

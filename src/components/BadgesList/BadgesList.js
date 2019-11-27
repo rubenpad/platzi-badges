@@ -8,10 +8,10 @@ function Badgeslist({ badges }) {
   return (
     <Container>
       <Box>
-        <Link to="/badges/new">NEW BADGE</Link>
+        <Link className="button" to="/badges/new">NEW BADGE</Link>
       </Box>
       <List>
-        {badges.map(badge => {
+        {badges.map((badge) => {
           return (
             <li key={badge.id}>
               <Link className="link" to={`/badges/${badge.id}/edit`}>

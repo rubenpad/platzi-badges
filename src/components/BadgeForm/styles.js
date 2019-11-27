@@ -11,7 +11,7 @@ const Container = styled.div`
   align-items: center;
   background: white;
   border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid #ebebeb;
 
   ${above.mediumL`
     width: 420px;

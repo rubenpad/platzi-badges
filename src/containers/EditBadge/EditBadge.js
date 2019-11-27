@@ -1,24 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import api from '../../api';
-import useQuery from '../../hooks/useQuery';
-
-import { StyledEditBadge } from './styles';
+import { Container, ContainerBadge, ContainerForm } from '../NewBadge/styles';
 import Badge from '../../components/Badge/Badge';
 import BadgeForm from '../../components/BadgeForm/BadgeForm';
 import PageError from '../../components/PageError/PageError';
 import PageLoading from '../../components/PageLoading/PageLoading';
 
 function EditBadge(props) {
-  const badge = useQuery(() => api.badges.read(props.match.params.badgeId));
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    jobTitle: '',
+    twitter: '',
+  });
+  const [status, setStatus] = useState({ loading: true, error: null });
 
+  const fetchData = async () => {
+    setStatus({ loading: true, error: null });
+    try {
+      const data = await api.badges.read(props.match.params.badgeId);
+      setStatus({ loading: false, error: null });
+      setForm(data);
+    } catch (error) {
+      setStatus({ loading: false, error });
+    }
+  };
 
-  const [status, setStatus] = useState({ loading: false, error: null });
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const onChange = (event) => {
     const { name, value } = event.target;
     setForm({
-      ...badge.data,
+      ...form,
       [name]: value,
     });
   };
@@ -27,7 +44,7 @@ function EditBadge(props) {
     event.preventDefault();
     setStatus({ loading: true, error: null });
     try {
-      await api.badges.update(props.match.params.badgeId, badge.data);
+      await api.badges.update(props.match.params.badgeId, form);
       setStatus({ loading: false, error: null });
       props.history.push('/badges');
     } catch (error) {
@@ -35,26 +52,26 @@ function EditBadge(props) {
     }
   };
 
-  if (badge.error) return <PageError error={status.error} />;
+  if (form.error) return <PageError error={status.error} />;
 
-  if (badge.loading || status.loading) return <PageLoading />;
+  if (status.loading) return <PageLoading />;
 
   return (
-    <StyledEditBadge>
-      <div className="badge">
-        <Badge badge={badge.data} />
-      </div>
-      <div className="form">
+    <Container>
+      <ContainerBadge>
+        <Badge badge={form} />
+      </ContainerBadge>
+      <ContainerForm>
         <BadgeForm
           onChange={onChange}
           onSubmit={onSubmit}
-          formValues={badge.data}
+          formValues={form}
           error={status.error}
           title="EDIT BADGE"
         />
-      </div>
-    </StyledEditBadge>
+      </ContainerForm>
+    </Container>
   );
-};
+}
 
 export default EditBadge;

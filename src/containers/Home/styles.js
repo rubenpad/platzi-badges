@@ -13,24 +13,14 @@ const Container = styled.div`
 
   ${above.large`
     flex-direction: row;
-
-    .astronauts {
-      width: 400px;
-    }
-
-    .description {
-      margin-left: 20px;
-      
-      button {
-        width: 140px;
-        font-size: 18px;
-      }
-    }
   `}
 `;
 
 const Image = styled.img`
   width: 200px;
+  ${above.large`
+    width: 400px;
+  `};
 `;
 
 const LandPage = styled.div`
@@ -70,6 +60,10 @@ const LandPage = styled.div`
       transform: scale(0.9);
     }
   }
+
+  ${above.large`
+    margin-left: 40px;
+  `};
 `;
 
 export { Container, Image, LandPage };

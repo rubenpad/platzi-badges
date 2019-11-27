@@ -16,15 +16,6 @@ const Container = styled.div`
     color: #fff;
     text-decoration: none;
   }
-
-  .link {
-    width: 420px;
-    height: 140px;
-    margin: 5px 8px;
-    background: #f6f8f9;
-    border-radius: 4px;
-    color: black;
-  }
 `;
 
 const Box = styled.div`
@@ -43,6 +34,21 @@ const List = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
+
+  li {
+    width: 420px;
+    height: 140px;
+    margin: 5px 8px;
+    background: #f6f8f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+
+    .link {
+      text-decoration: none;
+    }
+  }
 `;
 
 export { Container, Box, List };

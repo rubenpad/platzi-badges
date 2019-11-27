@@ -7,16 +7,19 @@ const Item = styled.div`
   padding-left: 10px;
   display: flex;
   align-items: center;
-  background: #f6f8f9;
 `;
 
 const UserBox = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   color: black;
 
+  p {
+    margin: 0;
+  }
+
   .twitter {
+    margin-top: 5px;
     color: ${colors.lightBlue};
   }
 `;

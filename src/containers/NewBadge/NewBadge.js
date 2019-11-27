@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import api from '../../api';
-import { StyledNewBadge } from './styles';
+import { Container, ContainerBadge, ContainerForm } from './styles';
 import Badge from '../../components/Badge/Badge';
 import BadgeForm from '../../components/BadgeForm/BadgeForm';
 import PageLoading from '../../components/PageLoading/PageLoading';
@@ -36,14 +36,14 @@ function NewBadge(props) {
     }
   };
 
-  if (form.status.loading) return <PageLoading />;
+  if (status.loading) return <PageLoading />;
 
   return (
-    <StyledNewBadge>
-      <div className="badge">
+    <Container>
+      <ContainerBadge>
         <Badge badge={form} />
-      </div>
-      <div className="form">
+      </ContainerBadge>
+      <ContainerForm>
         <BadgeForm
           onChange={onChange}
           onSubmit={onSubmit}
@@ -51,9 +51,9 @@ function NewBadge(props) {
           error={status.error}
           title="CREATE NEW BADGE"
         />
-      </div>
-    </StyledNewBadge>
+      </ContainerForm>
+    </Container>
   );
-};
+}
 
 export default NewBadge;
