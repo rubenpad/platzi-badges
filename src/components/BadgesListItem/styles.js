@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../../GlobalStyle';
 
 const StyledBadgesListItem = styled.div`
   width: 100%;
@@ -13,6 +14,10 @@ const Information = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  .twitter {
+    color: ${colors.lightBlue};
+  }
 `;
 
 export { StyledBadgesListItem, Information };

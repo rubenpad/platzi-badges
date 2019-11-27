@@ -5,12 +5,12 @@ import logo from '../../assets/badge-header.svg';
 import Gravatar from '../Gravatar/Gravatar';
 import { StyledBadge } from './styles';
 
-function Badge(props) {
-  const { firstName, lastName, jobTitle, twitter, email } = props;
+function Badge({ values }) {
+  const { firstName, lastName, jobTitle, twitter, email } = values;
   return (
     <StyledBadge>
       <div className="header">
-        <img src={logo} alt="PlatziConf Logo"/>
+        <img src={logo} alt="PlatziConf Logo" />
       </div>
       <div className="user">
         <Gravatar email={email} />

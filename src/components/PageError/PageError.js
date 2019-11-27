@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyledPageError } from './styles';
 
-function PageError(props) {
-  const { error } = props;
+function PageError({ error }) {
   return (
     <StyledPageError>
       <h1>

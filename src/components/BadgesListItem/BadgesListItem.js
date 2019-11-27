@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaTwitter } from 'react-icons/fa';
 
 import { StyledBadgesListItem, Information } from './styles';
 import Gravatar from '../Gravatar/Gravatar';
@@ -14,7 +15,10 @@ function BadgesListItem({ badge }) {
           <h2>{`${firstName} ${lastName}`}</h2>
         </div>
         <div>
-          <p>{twitter}</p>
+          <p className="twitter">
+            <FaTwitter />
+            {twitter}
+          </p>
           <p>{jobTitle}</p>
         </div>
       </Information>
