@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
-import { colors } from '../../GlobalStyle';
+import { above, colors } from '../../GlobalStyle';
 
 const Container = styled.div`
   width: 100%;
@@ -12,6 +12,7 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 3px;
     background: ${colors.green};
     color: #fff;
     text-decoration: none;
@@ -22,10 +23,28 @@ const Box = styled.div`
   width: 100%;
   height: 120px;
   margin: 10px 0;
-  padding: 0 23px;
+  padding: 10px 23px;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  ${above.mediumL`
+    flex-direction: row;
+  `};
+`;
+
+const Input = styled.input`
+  width: 100%;
+  height: 48px;
+  margin-top: 10px;
+  padding: 4px 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+  ${above.mediumL`
+    width: 500px;
+    margin: 0 0 0 10px;
+  `};
 `;
 
 const List = styled.ul`
@@ -51,4 +70,4 @@ const List = styled.ul`
   }
 `;
 
-export { Container, Box, List };
+export { Container, Box, Input, List };
