@@ -23,10 +23,10 @@ const Header = styled.header`
   background: ${colors.darkBlue};
 `;
 
-const UserBox = styled.div`
+const Box = styled.div`
   width: 100%;
   height: 200px;
-  padding: 40px;
+  padding-left: 10px;
   display: flex;
   align-items: center;
 
@@ -51,4 +51,4 @@ const Footer = styled.footer`
   color: ${colors.lightBlue};
 `;
 
-export { Container, Header, UserBox, Footer };
+export { Container, Header, Box, Footer };

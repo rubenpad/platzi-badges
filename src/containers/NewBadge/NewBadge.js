@@ -49,7 +49,7 @@ function NewBadge(props) {
           onSubmit={onSubmit}
           formValues={form}
           error={status.error}
-          title="CREATE NEW BADGE"
+          title="CREATE BADGE"
         />
       </ContainerForm>
     </Container>

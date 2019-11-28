@@ -33,7 +33,7 @@ function Badgeslist({ badges }) {
           {filteredBadges.map((badge) => {
             return (
               <li key={badge.id}>
-                <Link className="link" to={`/badges/${badge.id}/edit`}>
+                <Link className="link" to={`/badges/${badge.id}/details`}>
                   <BadgesListItem badge={badge} />
                 </Link>
               </li>

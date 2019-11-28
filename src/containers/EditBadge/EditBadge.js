@@ -67,7 +67,7 @@ function EditBadge(props) {
           onSubmit={onSubmit}
           formValues={form}
           error={status.error}
-          title="EDIT BADGE"
+          title="UPDATE BADGE"
         />
       </ContainerForm>
     </Container>

@@ -7,6 +7,7 @@ export const colors = {
   lightGreen: '#95ca3e',
   green: '#85c638',
   darkGreen: '#58902d',
+  danger: '#ff463b',
 };
 
 export const size = {

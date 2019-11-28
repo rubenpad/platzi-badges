@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 import Home from '../containers/Home/Home';
 import Badges from '../containers/Badges/Badges';
 import NewBadge from '../containers/NewBadge/NewBadge';
+import BadgeDetailsContainer from '../containers/BadgeDetailsContainer/BadgeDetailsContainer';
 import EditBadge from '../containers/EditBadge/EditBadge';
 import NotFound from '../components/NotFound/NotFound';
 
@@ -18,12 +19,17 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/badges" component={Badges} />
           <Route exact path="/badges/new" component={NewBadge} />
+          <Route
+            exact
+            path="/badges/:badgeId/details"
+            component={BadgeDetailsContainer}
+          />
           <Route exact path="/badges/:badgeId/edit" component={EditBadge} />
           <Route component={NotFound} />
         </Switch>
       </Layout>
     </BrowserRouter>
   );
-};
+}
 
 export default App;
