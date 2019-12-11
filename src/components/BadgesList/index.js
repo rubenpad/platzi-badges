@@ -1,15 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import BadgesListItem from '../BadgesListItem/BadgesListItem';
+import BadgesListItem from '../BadgesListItem';
 import { Container, Box, Input, List } from './styles';
 
 function Badgeslist({ badges }) {
   const [query, setQuery] = React.useState('');
+  const [filteredBadges, setFilteredBadges] = React.useState(badges);
 
-  const filteredBadges = badges.filter((badge) => {
-    return `${badge.firstName} ${badge.lastName}`.toLowerCase().includes(query);
-  });
+  React.useMemo(() => {
+    const result = badges.filter((badge) => {
+      return `${badge.firstName} ${badge.lastName}`
+        .toLowerCase()
+        .includes(query.toLowerCase());
+    });
+
+    setFilteredBadges(result);
+  }, [badges, query]);
 
   const onChange = (event) => {
     setQuery(event.target.value);

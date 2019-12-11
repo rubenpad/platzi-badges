@@ -2,7 +2,7 @@ import React from 'react';
 import { FaTwitter } from 'react-icons/fa';
 
 import { Item, UserBox } from './styles';
-import Gravatar from '../Gravatar/Gravatar';
+import Gravatar from '../Gravatar';
 
 function BadgesListItem({ badge }) {
   const { firstName, lastName, email, jobTitle, twitter } = badge;

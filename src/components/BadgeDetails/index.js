@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container, ContainerBadge, ContainerActions, Button } from './styles';
-import Badge from '../Badge/Badge';
-import DeleteBadgeModal from '../DeleteBadgeModal/DeleteBadgeModal';
+import Badge from '../Badge';
+import DeleteBadgeModal from '../DeleteBadgeModal';
 
 function BagdeDetails(props) {
   const { badge, deleteBadge, modalMode, openModal, closeModal } = props;

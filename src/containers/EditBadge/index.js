@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 import api from '../../api';
 import { Container, ContainerBadge, ContainerForm } from '../NewBadge/styles';
-import Badge from '../../components/Badge/Badge';
-import BadgeForm from '../../components/BadgeForm/BadgeForm';
-import PageError from '../../components/PageError/PageError';
-import PageLoading from '../../components/PageLoading/PageLoading';
+import Badge from '../../components/Badge';
+import BadgeForm from '../../components/BadgeForm';
+import PageError from '../../components/PageError';
+import PageLoading from '../../components/PageLoading';
 
 function EditBadge(props) {
   const [form, setForm] = useState({

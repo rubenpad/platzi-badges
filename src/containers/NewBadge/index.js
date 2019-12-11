@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import api from '../../api';
 import { Container, ContainerBadge, ContainerForm } from './styles';
-import Badge from '../../components/Badge/Badge';
-import BadgeForm from '../../components/BadgeForm/BadgeForm';
-import PageLoading from '../../components/PageLoading/PageLoading';
+import Badge from '../../components/Badge';
+import BadgeForm from '../../components/BadgeForm';
+import PageLoading from '../../components/PageLoading';
 
 function NewBadge(props) {
   const [status, setStatus] = useState({ loading: false, error: null });

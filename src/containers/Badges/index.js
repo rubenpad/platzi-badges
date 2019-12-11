@@ -3,10 +3,10 @@ import React from 'react';
 import useQuery from '../../hooks/useQuery';
 import api from '../../api';
 
-import PageLoading from '../../components/PageLoading/PageLoading';
-import BadgesList from '../../components/BadgesList/BadgesList';
-import PageError from '../../components/PageError/PageError';
-import { Container } from '../../components/BadgesList/styles';
+import PageLoading from '../../components/PageLoading';
+import BadgesList from '../../components/BadgesList';
+import PageError from '../../components/PageError';
+import { Container } from './styles';
 
 function Badges() {
   const badges = useQuery(api.badges.list);

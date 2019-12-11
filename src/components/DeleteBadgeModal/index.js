@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Modal from '../Modal/Modal';
+import Modal from '../Modal';
 import { ModalDelete, Button } from './styles';
 
 function DeleteBadgeModal(props) {

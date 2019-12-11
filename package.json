@@ -5,10 +5,9 @@
   "author": "Ruben Padilla <rubbenpad2@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --config webpack_dev.config.js",
+    "start": "webpack-dev-server --open --hot --mode development",
     "server": "json-server ./server/db.json",
-    "build:dll": "webpack --config webpack_dll.config.js",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "@babel/runtime": "^7.7.4",

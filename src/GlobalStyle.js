@@ -18,11 +18,11 @@ export const size = {
 };
 
 export const above = Object.keys(size).reduce((acc, label) => {
-  acc[label] = (...args) => css `
+  acc[label] = (...args) => css`
     @media (min-width: ${size[label]}px) {
       ${css(...args)}
     }
-  `
+  `;
   return acc;
 }, {});
 

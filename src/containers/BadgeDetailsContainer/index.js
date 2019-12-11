@@ -3,9 +3,9 @@ import React from 'react';
 
 import api from '../../api';
 import useQuery from '../../hooks/useQuery';
-import PageLoading from '../../components/PageLoading/PageLoading';
-import PageError from '../../components/PageError/PageError';
-import BadgeDetails from '../../components/BadgeDetails/BadgeDetails';
+import PageLoading from '../../components/PageLoading';
+import PageError from '../../components/PageError';
+import BadgeDetails from '../../components/BadgeDetails';
 
 function BadgeDetailsContainer(props) {
   const badge = useQuery(() => api.badges.read(props.match.params.badgeId));

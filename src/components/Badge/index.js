@@ -2,7 +2,7 @@ import React from 'react';
 import { FaTwitter } from 'react-icons/fa';
 
 import logo from '../../assets/badge-header.svg';
-import Gravatar from '../Gravatar/Gravatar';
+import Gravatar from '../Gravatar';
 import { Container, Header, Box, Footer } from './styles';
 
 function Badge({ badge }) {

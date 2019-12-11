@@ -3,12 +3,12 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import { GlobalStyle } from '../GlobalStyle';
 import Layout from '../components/Layout';
-import Home from '../containers/Home/Home';
-import Badges from '../containers/Badges/Badges';
-import NewBadge from '../containers/NewBadge/NewBadge';
-import BadgeDetailsContainer from '../containers/BadgeDetailsContainer/BadgeDetailsContainer';
-import EditBadge from '../containers/EditBadge/EditBadge';
-import NotFound from '../components/NotFound/NotFound';
+import Home from '../containers/Home';
+import Badges from '../containers/Badges';
+import NewBadge from '../containers/NewBadge';
+import BadgeDetailsContainer from '../containers/BadgeDetailsContainer';
+import EditBadge from '../containers/EditBadge';
+import NotFound from '../components/NotFound';
 
 function App() {
   return (
