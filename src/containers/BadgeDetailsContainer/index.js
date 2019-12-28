@@ -16,7 +16,7 @@ function BadgeDetailsContainer(props) {
 
   const [status, setStatus] = React.useState({ loading: false, error: null });
   const deleteBadge = async () => {
-    setStatus({ loading: true, erro: null });
+    setStatus({ loading: true, error: null });
     try {
       await api.badges.remove(props.match.params.badgeId);
       setStatus({ loading: false, error: null });
