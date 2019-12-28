@@ -6,7 +6,7 @@ An application developed for the React Course at Platzi. At start we use React c
 
 I am adding new features to the app to use the knowledge earn in the courses as Front-end developer at Platzi.
 
-What I learned fromm this:
+What I learned?
  
  - React
  - React Router
