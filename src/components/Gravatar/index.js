@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import md5 from 'md5';
 import Avatar from './styles';
 
@@ -8,5 +9,7 @@ function Gravatar({ email }) {
   const hash = md5(formattedEmail, { encoding: 'binary' });
   return <Avatar src={`${base}${hash}?d=identicon`} alt="User Avatar" />;
 }
+
+Gravatar.propTypes = { email: PropTypes.string.isRequired };
 
 export default Gravatar;

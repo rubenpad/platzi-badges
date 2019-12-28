@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { FaWindowClose } from 'react-icons/fa';
 
@@ -17,8 +18,14 @@ function Modal(props) {
         <ModalContent>{children}</ModalContent>
       </ModalBox>
     </Overlay>,
-    document.getElementById('modal'),
+    document.getElementById('modal')
   );
 }
+
+Modal.propTypes = {
+  children: PropTypes.element,
+  modalMode: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
+};
 
 export default Modal;

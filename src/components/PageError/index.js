@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Container from './styles';
 
 function PageError({ error }) {
@@ -13,5 +14,7 @@ function PageError({ error }) {
     </Container>
   );
 }
+
+PageError.propTypes = { error: PropTypes.object.isRequired };
 
 export default PageError;

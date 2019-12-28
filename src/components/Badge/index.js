@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FaTwitter } from 'react-icons/fa';
 
 import logo from '../../assets/badge-header.svg';
@@ -35,5 +36,9 @@ function Badge({ badge }) {
     </Container>
   );
 }
+
+Badge.propTypes = {
+  badge: PropTypes.object.isRequired,
+};
 
 export default Badge;

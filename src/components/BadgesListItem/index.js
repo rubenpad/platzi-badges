@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FaTwitter } from 'react-icons/fa';
 
 import { Item, UserBox } from './styles';
@@ -25,5 +26,7 @@ function BadgesListItem({ badge }) {
     </Item>
   );
 }
+
+BadgesListItem.propTypes = { badge: PropTypes.object.isRequired };
 
 export default BadgesListItem;

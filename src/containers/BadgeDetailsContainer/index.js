@@ -1,5 +1,5 @@
-/* eslint-disable react/destructuring-assignment */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import api from '../../api';
 import useQuery from '../../hooks/useQuery';
@@ -8,7 +8,12 @@ import PageError from '../../components/PageError';
 import BadgeDetails from '../../components/BadgeDetails';
 
 function BadgeDetailsContainer(props) {
-  const badge = useQuery(() => api.badges.read(props.match.params.badgeId));
+  const {
+    match: {
+      params: { badgeId },
+    },
+  } = props;
+  const badge = useQuery(() => api.badges.read(badgeId));
 
   const [modalMode, setModalMode] = React.useState({ visible: false });
   const openModal = () => setModalMode({ visible: true });
@@ -40,5 +45,7 @@ function BadgeDetailsContainer(props) {
     />
   );
 }
+
+BadgeDetailsContainer.propTypes = { badgeId: PropTypes.string.isRequired };
 
 export default BadgeDetailsContainer;

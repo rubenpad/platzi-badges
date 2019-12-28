@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { Container, ContainerBadge, ContainerActions, Button } from './styles';
@@ -25,5 +26,13 @@ function BagdeDetails(props) {
     </Container>
   );
 }
+
+BagdeDetails.propTypes = {
+  badge: PropTypes.object.isRequired,
+  deleteBadge: PropTypes.func.isRequired,
+  modalMode: PropTypes.bool.isRequired,
+  openModal: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+};
 
 export default BagdeDetails;

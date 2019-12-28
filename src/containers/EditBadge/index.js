@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import api from '../../api';
 import { Container, ContainerBadge, ContainerForm } from '../NewBadge/styles';
@@ -8,6 +9,12 @@ import PageError from '../../components/PageError';
 import PageLoading from '../../components/PageLoading';
 
 function EditBadge(props) {
+  const {
+    match: {
+      params: { badgeId },
+    },
+  } = props;
+
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -20,7 +27,7 @@ function EditBadge(props) {
   const fetchData = async () => {
     setStatus({ loading: true, error: null });
     try {
-      const data = await api.badges.read(props.match.params.badgeId);
+      const data = await api.badges.read(badgeId);
       setStatus({ loading: false, error: null });
       setForm(data);
     } catch (error) {
@@ -73,5 +80,7 @@ function EditBadge(props) {
     </Container>
   );
 }
+
+EditBadge.propTypes = { badgeId: PropTypes.string.isRequired };
 
 export default EditBadge;

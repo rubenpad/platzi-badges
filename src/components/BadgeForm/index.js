@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Container, Title, Form, Input, Button } from './styles';
 
@@ -53,6 +54,14 @@ function BadgeForm(props) {
       </Form>
     </Container>
   );
+}
+
+BadgeForm.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  formValues: PropTypes.object.isRequired,
+  error: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default BadgeForm;
