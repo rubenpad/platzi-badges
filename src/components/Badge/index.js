@@ -6,8 +6,9 @@ import logo from '../../assets/badge-header.svg';
 import Gravatar from '../Gravatar';
 import { Container, Header, Box, Footer } from './styles';
 
-function Badge({ badge }) {
+const Badge = ({ badge }) => {
   const { firstName, lastName, jobTitle, twitter, email } = badge;
+
   return (
     <Container>
       <Header>
@@ -35,10 +36,10 @@ function Badge({ badge }) {
       </Footer>
     </Container>
   );
-}
+};
 
 Badge.propTypes = {
-  badge: PropTypes.object.isRequired,
+  badge: PropTypes.object,
 };
 
 export default Badge;

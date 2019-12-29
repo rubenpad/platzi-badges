@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
-import api from '../../api';
 import { Container, ContainerBadge, ContainerForm } from './styles';
 import Badge from '../../components/Badge';
 import BadgeForm from '../../components/BadgeForm';
 import PageLoading from '../../components/PageLoading';
+import PageError from '../../components/PageError';
+import { createBadge } from '../../redux/actions';
 
-function NewBadge(props) {
-  const [status, setStatus] = useState({ loading: false, error: null });
+const NewBadge = (props) => {
+  const {
+    createBadge,
+    badgesReducer: { loading, error },
+  } = props;
+
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -24,19 +30,15 @@ function NewBadge(props) {
     });
   };
 
-  const onSubmit = async (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
-    setStatus({ loading: true, error: null });
-    try {
-      await api.badges.create(form);
-      setStatus({ loading: false });
-      props.history.push('/badges');
-    } catch (error) {
-      setStatus({ loading: false, error: null });
-    }
+    createBadge(form);
+    props.history.push('/badges');
   };
 
-  if (status.loading) return <PageLoading />;
+  if (error) return <PageError error={error} />;
+
+  if (loading) return <PageLoading />;
 
   return (
     <Container>
@@ -48,12 +50,16 @@ function NewBadge(props) {
           onChange={onChange}
           onSubmit={onSubmit}
           formValues={form}
-          error={status.error}
+          error={error}
           title="CREATE BADGE"
         />
       </ContainerForm>
     </Container>
   );
-}
+};
 
-export default NewBadge;
+const mapStateToProps = (state) => {
+  return { badgesReducer: state.badgesReducer };
+};
+
+export default connect(mapStateToProps, { createBadge })(NewBadge);

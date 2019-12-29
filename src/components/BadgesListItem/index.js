@@ -5,7 +5,7 @@ import { FaTwitter } from 'react-icons/fa';
 import { Item, UserBox } from './styles';
 import Gravatar from '../Gravatar';
 
-function BadgesListItem({ badge }) {
+const BadgesListItem = ({ badge }) => {
   const { firstName, lastName, email, jobTitle, twitter } = badge;
 
   return (
@@ -25,7 +25,7 @@ function BadgesListItem({ badge }) {
       </UserBox>
     </Item>
   );
-}
+};
 
 BadgesListItem.propTypes = { badge: PropTypes.object.isRequired };
 

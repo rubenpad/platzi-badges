@@ -23,10 +23,16 @@ const Button = styled.button`
   border-radius: 3px;
   background: ${colors.green};
   color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
 
   ${(props) => props.danger && css`
       background: ${colors.danger};
-    `}
+  `}
+
 `;
 
 export { ModalDelete, Button };

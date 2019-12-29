@@ -3,8 +3,15 @@ import PropTypes from 'prop-types';
 
 import { Container, Title, Form, Input, Button } from './styles';
 
-function BadgeForm(props) {
-  const { onChange, onSubmit, formValues, error, title } = props;
+const BadgeForm = (props) => {
+  const {
+    formValues: { firstName, lastName, email, twitter, jobTitle },
+    error,
+    onChange,
+    onSubmit,
+    title,
+  } = props;
+
   return (
     <Container>
       <Title>{title}</Title>
@@ -13,7 +20,7 @@ function BadgeForm(props) {
           onChange={onChange}
           type="text"
           name="firstName"
-          value={formValues.firstName}
+          value={firstName}
           placeholder="First Name"
           required
         />
@@ -21,7 +28,7 @@ function BadgeForm(props) {
           onChange={onChange}
           type="text"
           name="lastName"
-          value={formValues.lastName}
+          value={lastName}
           placeholder="Last Name"
           required
         />
@@ -29,7 +36,7 @@ function BadgeForm(props) {
           onChange={onChange}
           type="email"
           name="email"
-          value={formValues.email}
+          value={email}
           placeholder="Email"
           required
         />
@@ -37,7 +44,7 @@ function BadgeForm(props) {
           onChange={onChange}
           type="text"
           name="jobTitle"
-          value={formValues.jobTitle}
+          value={jobTitle}
           placeholder="Job Title"
           required
         />
@@ -45,7 +52,7 @@ function BadgeForm(props) {
           onChange={onChange}
           type="text"
           name="twitter"
-          value={formValues.twitter}
+          value={twitter}
           placeholder="Twitter"
           required
         />
@@ -54,14 +61,14 @@ function BadgeForm(props) {
       </Form>
     </Container>
   );
-}
+};
 
 BadgeForm.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  formValues: PropTypes.object.isRequired,
-  error: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired,
+  formValues: PropTypes.object,
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func,
+  error: PropTypes.object,
+  title: PropTypes.string,
 };
 
 export default BadgeForm;

@@ -55,9 +55,8 @@ const LandPage = styled.div`
     font-weight: 700;
     text-decoration: none;
 
-    &:active {
-      transition: all 0.5s ease-out;
-      transform: scale(0.9);
+    &:hover {
+      opacity: 0.9;
     }
   }
 

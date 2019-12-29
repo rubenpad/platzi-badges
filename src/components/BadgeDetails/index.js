@@ -1,13 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Container, ContainerBadge, ContainerActions, Button } from './styles';
 import Badge from '../Badge';
 import DeleteBadgeModal from '../DeleteBadgeModal';
 
-function BagdeDetails(props) {
-  const { badge, deleteBadge, modalMode, openModal, closeModal } = props;
+const BagdeDetails = (props) => {
+  const {
+    badge,
+    deleteBadge,
+    modalMode,
+    openModal,
+    closeModal,
+  } = props;
+
   return (
     <Container>
       <ContainerBadge>
@@ -25,14 +33,18 @@ function BagdeDetails(props) {
       </ContainerActions>
     </Container>
   );
-}
-
-BagdeDetails.propTypes = {
-  badge: PropTypes.object.isRequired,
-  deleteBadge: PropTypes.func.isRequired,
-  modalMode: PropTypes.bool.isRequired,
-  openModal: PropTypes.func.isRequired,
-  closeModal: PropTypes.func.isRequired,
 };
 
-export default BagdeDetails;
+BagdeDetails.propTypes = {
+  badge: PropTypes.object,
+  deleteBadge: PropTypes.func,
+  modalMode: PropTypes.bool,
+  openModal: PropTypes.func,
+  closeModal: PropTypes.func,
+};
+
+const mapStateToProps = (state) => {
+  return { badgesReducer: state.badgesReducer };
+};
+
+export default connect(mapStateToProps, null)(BagdeDetails);

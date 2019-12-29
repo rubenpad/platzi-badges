@@ -50,11 +50,16 @@ const ContainerActions = styled.div`
     cursor: pointer;
     text-decoration: none;
     font-weight: 500px;
+
+    &:hover {
+      opacity: 0.9;
+    }
   }
 
   ${above.mediumL`
     width: 320px;
     margin: 20px 0;
+    padding-left: 30px;
   `};
 `;
 
@@ -67,9 +72,8 @@ const Button = styled.button`
   cursor: pointer;
   font-weight: 500px;
   font-size: 16px;
-  &:active {
-    transition: .1s ease-out;
-    transform: scale(.9);
+  &:hover {
+    opacity: 0.9;
   }
 `;
 

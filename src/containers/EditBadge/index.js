@@ -1,43 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import api from '../../api';
 import { Container, ContainerBadge, ContainerForm } from '../NewBadge/styles';
 import Badge from '../../components/Badge';
 import BadgeForm from '../../components/BadgeForm';
 import PageError from '../../components/PageError';
 import PageLoading from '../../components/PageLoading';
+import { getBadge, updateBadge } from '../../redux/actions';
 
-function EditBadge(props) {
+const EditBadge = (props) => {
   const {
+    getBadge,
+    updateBadge,
+    badgesReducer: {
+      badgeById: { firstName, lastName, email, jobTitle, twitter },
+      loading,
+      error,
+    },
     match: {
       params: { badgeId },
     },
   } = props;
 
   const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    jobTitle: '',
-    twitter: '',
+    firstName,
+    lastName,
+    email,
+    jobTitle,
+    twitter,
   });
-  const [status, setStatus] = useState({ loading: true, error: null });
-
-  const fetchData = async () => {
-    setStatus({ loading: true, error: null });
-    try {
-      const data = await api.badges.read(badgeId);
-      setStatus({ loading: false, error: null });
-      setForm(data);
-    } catch (error) {
-      setStatus({ loading: false, error });
-    }
-  };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    getBadge(badgeId);
+  }, [getBadge]);
 
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -47,21 +43,15 @@ function EditBadge(props) {
     });
   };
 
-  const onSubmit = async (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
-    setStatus({ loading: true, error: null });
-    try {
-      await api.badges.update(props.match.params.badgeId, form);
-      setStatus({ loading: false, error: null });
-      props.history.push('/badges');
-    } catch (error) {
-      setStatus({ loading: false, error });
-    }
+    updateBadge(badgeId, form);
+    props.history.push('/badges');
   };
 
-  if (form.error) return <PageError error={status.error} />;
+  if (error) return <PageError error={error} />;
 
-  if (status.loading) return <PageLoading />;
+  if (loading) return <PageLoading />;
 
   return (
     <Container>
@@ -73,14 +63,25 @@ function EditBadge(props) {
           onChange={onChange}
           onSubmit={onSubmit}
           formValues={form}
-          error={status.error}
+          error={error}
           title="UPDATE BADGE"
         />
       </ContainerForm>
     </Container>
   );
-}
+};
 
-EditBadge.propTypes = { badgeId: PropTypes.string.isRequired };
+EditBadge.propTypes = { badgeId: PropTypes.string };
 
-export default EditBadge;
+const mapStateToProps = (state) => {
+  return {
+    badgesReducer: state.badgesReducer,
+  };
+};
+
+const mapDispatchToProps = {
+  getBadge,
+  updateBadge,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditBadge);

@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import BadgesListItem from '../BadgesListItem';
 import { Container, Box, Input, List } from './styles';
 
-function Badgeslist({ badges }) {
+const BadgesList = (props) => {
+  const {
+    badgesReducer: { badges },
+  } = props;
+
   const [query, setQuery] = React.useState('');
   const [filteredBadges, setFilteredBadges] = React.useState(badges);
 
@@ -51,8 +56,12 @@ function Badgeslist({ badges }) {
       )}
     </Container>
   );
-}
+};
 
-Badgeslist.propTypes = { badges: PropTypes.array.isRequired };
+BadgesList.propTypes = { badges: PropTypes.array };
 
-export default Badgeslist;
+const mapStateToProps = (state) => {
+  return { badgesReducer: state.badgesReducer };
+};
+
+export default connect(mapStateToProps, null)(BadgesList);

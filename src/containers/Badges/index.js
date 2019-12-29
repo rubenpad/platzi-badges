@@ -1,25 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import useQuery from '../../hooks/useQuery';
-import api from '../../api';
-
+import { Container } from './styles';
 import PageLoading from '../../components/PageLoading';
 import BadgesList from '../../components/BadgesList';
 import PageError from '../../components/PageError';
-import { Container } from './styles';
+import { getBadges } from '../../redux/actions';
 
-function Badges() {
-  const badges = useQuery(api.badges.list);
+const Badges = (props) => {
+  const {
+    badgesReducer: { loading, error },
+    getBadges,
+  } = props;
 
-  if (badges.error) return <PageError error={badges.error} />;
+  useEffect(() => {
+    getBadges();
+  }, [getBadges]);
 
-  if (badges.loading) return <PageLoading />;
+  if (error) return <PageError error={error} />;
+
+  if (loading) return <PageLoading />;
 
   return (
     <Container>
-      <BadgesList badges={badges.data} />
+      <BadgesList />
     </Container>
   );
-}
+};
 
-export default Badges;
+Badges.propTypes = {
+  loading: PropTypes.bool,
+  error: PropTypes.string,
+  getBadges: PropTypes.func,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    badgesReducer: state.badgesReducer,
+  };
+};
+
+export default connect(mapStateToProps, { getBadges })(Badges);

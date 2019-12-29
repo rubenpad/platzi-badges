@@ -5,10 +5,11 @@ import { FaWindowClose } from 'react-icons/fa';
 
 import { Overlay, ModalBox, ModalContent, CloseButton } from './styles';
 
-function Modal(props) {
+const Modal = (props) => {
   const { children, modalMode, closeModal } = props;
 
   if (!modalMode) return null;
+
   return createPortal(
     <Overlay>
       <ModalBox>
@@ -18,14 +19,14 @@ function Modal(props) {
         <ModalContent>{children}</ModalContent>
       </ModalBox>
     </Overlay>,
-    document.getElementById('modal')
+    document.getElementById('modal'),
   );
-}
+};
 
 Modal.propTypes = {
   children: PropTypes.element,
-  modalMode: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func.isRequired,
+  modalMode: PropTypes.bool,
+  closeModal: PropTypes.func,
 };
 
 export default Modal;

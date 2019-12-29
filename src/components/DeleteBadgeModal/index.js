@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import Modal from '../Modal';
 import { ModalDelete, Button } from './styles';
 
-function DeleteBadgeModal(props) {
+const DeleteBadgeModal = (props) => {
   const { modalMode, closeModal, deleteBadge } = props;
+
   return (
     <Modal modalMode={modalMode} closeModal={closeModal}>
       <ModalDelete>
@@ -20,12 +21,12 @@ function DeleteBadgeModal(props) {
       </ModalDelete>
     </Modal>
   );
-}
+};
 
 DeleteBadgeModal.propTypes = {
-  modalMode: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func.isRequired,
-  deleteBadge: PropTypes.func.isRequired,
+  modalMode: PropTypes.bool,
+  closeModal: PropTypes.func,
+  deleteBadge: PropTypes.func,
 };
 
 export default DeleteBadgeModal;

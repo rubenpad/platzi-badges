@@ -1,51 +1,71 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import api from '../../api';
-import useQuery from '../../hooks/useQuery';
 import PageLoading from '../../components/PageLoading';
 import PageError from '../../components/PageError';
 import BadgeDetails from '../../components/BadgeDetails';
+import { getBadge, deleteBadge } from '../../redux/actions';
 
-function BadgeDetailsContainer(props) {
+const BadgeDetailsContainer = (props) => {
   const {
+    getBadge,
+    deleteBadge,
+    badgesReducer: { badgeById, loading, error },
     match: {
       params: { badgeId },
     },
   } = props;
-  const badge = useQuery(() => api.badges.read(badgeId));
+
+  useEffect(() => {
+    getBadge(badgeId);
+  }, [getBadge]);
+
+  const handleDeleteBadge = () => {
+    deleteBadge(badgeById.id);
+    props.history.push('/badges');
+  };
 
   const [modalMode, setModalMode] = React.useState({ visible: false });
   const openModal = () => setModalMode({ visible: true });
   const closeModal = () => setModalMode({ visible: false });
 
-  const [status, setStatus] = React.useState({ loading: false, error: null });
-  const deleteBadge = async () => {
-    setStatus({ loading: true, error: null });
-    try {
-      await api.badges.remove(props.match.params.badgeId);
-      setStatus({ loading: false, error: null });
-      props.history.push('/badges');
-    } catch (error) {
-      setStatus({ loading: false, error });
-    }
-  };
+  if (loading) return <PageLoading />;
 
-  if (badge.loading || status.loading) return <PageLoading />;
+  if (error) return <PageError error={error} />;
 
-  if (badge.error || status.error) return <PageError />;
-
-  return (
+  return typeof badgeById === 'object' && Object.keys(badgeById).length ? (
     <BadgeDetails
-      badge={badge.data}
+      badge={badgeById}
       modalMode={modalMode.visible}
       openModal={openModal}
       closeModal={closeModal}
-      deleteBadge={deleteBadge}
+      deleteBadge={handleDeleteBadge}
     />
+  ) : (
+    ''
   );
-}
+};
 
-BadgeDetailsContainer.propTypes = { badgeId: PropTypes.string.isRequired };
+BadgeDetailsContainer.propTypes = {
+  badgeId: PropTypes.string,
+  getBadge: PropTypes.func,
+  deleteBadge: PropTypes.func,
+  badgeById: PropTypes.object,
+  loading: PropTypes.bool,
+  error: PropTypes.string,
+};
 
-export default BadgeDetailsContainer;
+const mapStateToProps = (state) => {
+  return { badgesReducer: state.badgesReducer };
+};
+
+const mapDispatchToProps = {
+  getBadge,
+  deleteBadge,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BadgeDetailsContainer);
