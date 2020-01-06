@@ -33,7 +33,7 @@ const EditBadge = (props) => {
 
   useEffect(() => {
     getBadge(badgeId);
-  }, [getBadge]);
+  }, [getBadge, badgeId]);
 
   const onChange = (event) => {
     const { name, value } = event.target;
