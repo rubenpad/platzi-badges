@@ -1,7 +1,8 @@
 {
-  "name": "try",
+  "name": "platzi-badges",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rubbenpad.github.io/platzi-badges",
   "dependencies": {
     "@babel/core": "7.7.4",
     "@svgr/webpack": "4.3.3",
@@ -72,6 +73,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "deploy": "gh-pages -d build",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
@@ -143,5 +145,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
   }
 }
