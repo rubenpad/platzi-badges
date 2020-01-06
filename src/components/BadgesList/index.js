@@ -45,8 +45,8 @@ const BadgesList = (props) => {
         <List>
           {filteredBadges.map((badge) => {
             return (
-              <li key={badge.id}>
-                <Link className="link" to={`/badges/${badge.id}/details`}>
+              <li key={badge._id}>
+                <Link className="link" to={`/badges/${badge._id}/details`}>
                   <BadgesListItem badge={badge} />
                 </Link>
               </li>

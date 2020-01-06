@@ -8,7 +8,7 @@ function configureStore(preloadedState) {
   return createStore(
     rootReducer,
     preloadedState,
-    composeEnhancers(applyMiddleware(thunkMiddleware))
+    composeEnhancers(applyMiddleware(thunkMiddleware)),
   );
 }
 

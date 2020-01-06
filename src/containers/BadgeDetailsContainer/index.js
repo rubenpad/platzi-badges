@@ -22,7 +22,7 @@ const BadgeDetailsContainer = (props) => {
   }, [getBadge]);
 
   const handleDeleteBadge = () => {
-    deleteBadge(badgeById.id);
+    deleteBadge(badgeById._id);
     props.history.push('/badges');
   };
 

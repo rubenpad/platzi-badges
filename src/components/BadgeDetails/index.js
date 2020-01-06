@@ -23,7 +23,7 @@ const BagdeDetails = (props) => {
       </ContainerBadge>
       <ContainerActions>
         <h2>Actions</h2>
-        <Link to={`/badges/${badge.id}/edit`}>EDIT</Link>
+        <Link to={`/badges/${badge._id}/edit`}>EDIT</Link>
         <Button onClick={openModal}>DELETE</Button>
         <DeleteBadgeModal
           modalMode={modalMode}

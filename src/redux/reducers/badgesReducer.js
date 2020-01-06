@@ -1,12 +1,4 @@
-import {
-  GET_BADGES,
-  GET_BADGE,
-  BADGE_CREATED,
-  BADGE_UPDATED,
-  BADGE_DELETED,
-  LOADING,
-  ERROR,
-} from '../actionTypes';
+import { GET_BADGES, GET_BADGE, LOADING, ERROR } from '../actionTypes';
 
 const initialState = {
   badges: [],
@@ -29,27 +21,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         badgeById: action.payload,
-        loading: false,
-      };
-
-    case BADGE_CREATED:
-      return {
-        ...state,
-        message: action.payload,
-        loading: false,
-      };
-
-    case BADGE_UPDATED:
-      return {
-        ...state,
-        message: action.payload,
-        loading: false,
-      };
-
-    case BADGE_DELETED:
-      return {
-        ...state,
-        message: action.payload,
         loading: false,
       };
 

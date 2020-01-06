@@ -1,27 +1,15 @@
-import {
-  GET_BADGES,
-  GET_BADGE,
-  BADGE_CREATED,
-  BADGE_UPDATED,
-  BADGE_DELETED,
-  ERROR,
-  LOADING,
-} from './actionTypes';
+import axios from 'axios';
+import { GET_BADGES, GET_BADGE, ERROR, LOADING } from './actionTypes';
 
-const baseUrl = 'http://localhost:3000/badges';
+const baseUrl = 'https://platzibadges-api.now.sh/badges';
 
 export function getBadges() {
   return async (dispatch) => {
     dispatch({ type: LOADING });
 
     try {
-      const response = await fetch(baseUrl, {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      });
-      const data = await response.json();
+      const response = await axios({ method: 'get', url: `${baseUrl}` });
+      const { data } = await response.data;
       dispatch({ type: GET_BADGES, payload: data });
     } catch (error) {
       dispatch({ type: ERROR, payload: error });
@@ -34,13 +22,11 @@ export function getBadge(badgeId) {
     dispatch({ type: LOADING });
 
     try {
-      const response = await fetch(`${baseUrl}/${badgeId}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+      const response = await axios({
+        method: 'get',
+        url: `${baseUrl}/${badgeId}`,
       });
-      const data = await response.json();
+      const { data } = await response.data;
       dispatch({ type: GET_BADGE, payload: data });
     } catch (error) {
       dispatch({ type: ERROR, payload: error });
@@ -53,15 +39,10 @@ export function createBadge(badge) {
     dispatch({ type: LOADING });
 
     try {
-      fetch(`${baseUrl}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(badge),
-      });
-      dispatch({ type: BADGE_CREATED, payload: 'Badge created successfully' });
+      await axios({ method: 'post', url: `${baseUrl}`, data: badge });
+      const response = await axios({ method: 'get', url: `${baseUrl}` });
+      const { data } = await response.data;
+      dispatch({ type: GET_BADGES, payload: data });
     } catch (error) {
       dispatch({ type: ERROR, payload: error });
     }
@@ -73,15 +54,14 @@ export function updateBadge(badgeId, updates) {
     dispatch({ type: LOADING });
 
     try {
-      fetch(`${baseUrl}/${badgeId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(updates),
+      await axios({
+        method: 'put',
+        url: `${baseUrl}/${badgeId}`,
+        data: updates,
       });
-      dispatch({ type: BADGE_UPDATED, payload: 'Badge updated successfully' });
+      const response = await axios({ method: 'get', url: `${baseUrl}` });
+      const { data } = await response.data;
+      dispatch({ type: GET_BADGES, payload: data });
     } catch (error) {
       dispatch({ type: ERROR, payload: error });
     }
@@ -89,17 +69,16 @@ export function updateBadge(badgeId, updates) {
 }
 
 export function deleteBadge(badgeId) {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch({ type: LOADING });
     try {
-      fetch(`${baseUrl}/${badgeId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+      await axios({
+        method: 'delete',
+        url: `${baseUrl}/${badgeId}`,
       });
-      dispatch({ type: BADGE_DELETED, payload: 'Badge deleted successfully' });
+      const response = await axios({ method: 'get', url: `${baseUrl}` });
+      const { data } = await response.data;
+      dispatch({ type: GET_BADGES, payload: data });
     } catch (error) {
       dispatch({ type: ERROR, payload: error });
     }
