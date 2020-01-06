@@ -19,7 +19,7 @@ const BadgeDetailsContainer = (props) => {
 
   useEffect(() => {
     getBadge(badgeId);
-  }, [getBadge]);
+  }, [getBadge, badgeId]);
 
   const handleDeleteBadge = () => {
     deleteBadge(badgeById._id);
