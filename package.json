@@ -71,8 +71,6 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
     "build": "node scripts/build.js",
     "start": "node scripts/start.js",
     "start:prod": "node server.js",
