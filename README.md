@@ -4,15 +4,14 @@
 
 ![App screenshot](./screenshots/platzibadges.png)
 
-App to register the attendants to the PlatziConf.
+Application to register the attendants to PlatziConf created with the knowledge earned in the ReactJS course at Platzi.
 
-Created with the knowledge earned in the ReactJS course at Platzi.
+In the course, the UI was styled with Bootstrap but I wanted to try styled-components and I like them. Also, we just create the frontend and there isn't data persistence, I wanted to make some extra work and create the backend with the knowledge earned in the Backend with Node Course at Platzi.
 
-APP DEPLOY [PlatziBadges](https://platzibadges-cra.now.sh)
+I also implemented Redux in the project to manage the state and to practice how to work with Redux.
 
-API created with NodeJS
+Demo:  [PlatziBadges](https://platzibadges-cra.now.sh)
 
-API DEPLOY 🚀 [platzibadges-api](https://platzibadges-api.now.sh/badges)
 
 ⚡️ Quick Start
 
@@ -22,9 +21,9 @@ API DEPLOY 🚀 [platzibadges-api](https://platzibadges-api.now.sh/badges)
 
 2. Install dependecies
 
-- `yarn install`
+- `npm install`
 
 3. Scripts
 
-- `yarn start` | Development
-- `yarn build && serve -s build` | Production
+- `npm start` | Development
+- `npm build && serve -s build` | Production
