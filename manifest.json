@@ -1,0 +1,16 @@
+{
+  "short_name": "Badges",
+  "name": "Platzi Badges",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "type": "image/svg",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#1c3643",
+  "background_color": "#ffffff"
+}
