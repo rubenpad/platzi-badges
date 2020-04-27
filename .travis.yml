@@ -9,6 +9,13 @@ git:
   depth: 3
 script:
   - yarn build
+# Who is notified from this process
+notifications:
+  email:
+    recipients:
+      - rubbenpad2@gmail.com
+    on_success: always
+    on_failure: always
 deploy:
   provider: pages
   skit-cleanup: true
